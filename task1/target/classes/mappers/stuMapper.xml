@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StudentDao">
+    <!--id:resultMap的唯一标识、type:返回结果集对应的java的实体类型、autoMapping：默认完成映射，如果已开启驼峰匹配，可以解决驼峰匹配-->
+    <resultMap id="sign_up" type="pojo.Student" autoMapping="true">
+        <!--指定主键，column：数据库中的列名、property：java实体类中的属性名-->
+        <id column="id" property="id"/>
+        <result column="s_name" property="sName"/>
+        <result column="create_at" property="createAt"/>
+        <result column="update_at" property="updateAt"/>
+    </resultMap>
+    <!--sql片段-->
+    <sql id="column">
+        id,s_name,qq,job,create_at,update_at
+    </sql>
+    <sql id="values">
+        #{id},#{sName},#{qq},#{job},#{createAt},#{updateAt}
+    </sql>
+    <sql id="batchValues">
+        #{item.id},#{item.sName},#{item.qq},#{item.job},#{item.createAt},#{item.updateAt}
+    </sql>
+
+    <insert id="addStu" parameterType="pojo.Student" useGeneratedKeys="true" keyProperty="id">
+        insert into sign_up (<include refid="column"/>) values (<include refid="values"/>);
+    </insert>
+
+    <insert id="batchAdd" parameterType="pojo.Student">
+        insert into sign_up (<include refid="column"/>) values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (<include refid="batchValues"/>)
+        </foreach>
+    </insert>
+
+    <select id="selectByJob" parameterType="pojo.Student" resultMap="sign_up">
+        select <include refid="column"/> from sign_up where job=#{job}
+    </select>
+
+    <select id="selectByIdAndName" parameterType="pojo.Student" resultMap="sign_up">
+        select job from sign_up
+        <where>
+        <if test="sName!=null and sName.trim()!=''">
+            and s_name like '%${sName}%'
+        </if>
+        <if test="id!=null">
+            and id = #{id}
+        </if>
+
+        </where>
+    </select>
+
+    <delete id="deleteById" parameterType="pojo.Student">
+        delete from sign_up where id=#{id}
+    </delete>
+
+    <update id="updateById" parameterType="pojo.Student">
+        update sign_up
+        <trim prefix="set" suffixOverrides=",">
+            <if test="sName!=null">s_name=#{sName},</if>
+            <if test="qq!=null">qq=#{qq},</if>
+            <if test="job!=null">job=#{job},</if>
+        </trim>
+        where id=#{id}
+    </update>
+
+</mapper>
