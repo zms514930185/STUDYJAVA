@@ -13,6 +13,6 @@ public interface StudentDao {
     void batchAdd(List list);
     List<Student> selectByJob(String job);
     void deleteById(Integer id);
-    void updateById(Student stu);
+    int updateById(Student stu);
     List<Student> selectByIdAndName(Student student);
 }

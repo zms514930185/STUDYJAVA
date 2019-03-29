@@ -25,8 +25,8 @@ public class StuServiceImpl implements StuService {
     public void deleteById(Integer id){
         studentDao.deleteById(id);
     }
-    public void updateById(Student stu){
-        studentDao.updateById(stu);
+    public int updateById(Student stu){
+        return studentDao.updateById(stu);
     }
     public List<Student> selectByIdAndName(Student stu){
         return  studentDao.selectByIdAndName(stu);

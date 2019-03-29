@@ -90,11 +90,17 @@ public class StuServiceImplTest {
 
     @Test
     public void updateById(){
+
         stu.setsName("粉笔小新");
         stu.setJob(null);
         stu.setQq(null);
-        stu.setId(3800099);
-        ssi.updateById(stu);
+        stu.setId(380000099);
+        int index=ssi.updateById(stu);
+        if (index>0){
+            System.out.println("ture");
+        }else {
+            System.out.println("false");
+        }
     }
     @Test
     public void selectByIdAndName(){
