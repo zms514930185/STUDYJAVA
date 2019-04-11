@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StuMapper">
+    <resultMap id="sign" type="pojo.Student" autoMapping="true">
+        <id property="id" column="id"/>
+        <result property="stuName" column="stu_name"/>
+        <result property="signTime" column="sign_time"/>
+        <result property="onlineId" column="online_id"/>
+        <result property="dailyUrl" column="daily_url"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+    </resultMap>
+
+    <sql id="allColumn">
+        stu_name,qq,job,create_at,update_at,daily_url,flag
+    </sql>
+
+    <sql id="values">
+        #{stuName},#{qq},#{job},#{createAt},#{updateAt},#{dailyUrl},#{flag}
+    </sql>
+
+    <insert id="addStu" parameterType="pojo.Student">
+        insert into sign_up (<include refid="allColumn"/>) values (<include refid="values"/>);
+    </insert>
+
+    <select id="list" resultMap="sign">
+        select id,<include refid="allColumn"/> from sign_up
+    </select>
+
+    <update id="update" parameterType="pojo.Student" keyProperty="id">
+        update sign_up
+        <trim prefix="set" suffixOverrides=",">
+            <if test="stuName!=null and stuName!=''">stu_name=#{stuName},</if>
+            <if test="qq!=null and qq!=''">qq=#{qq},</if>
+            <if test="job!=null and job!=''">job=#{job},</if>
+            <if test="updateAt!=null and updateAt!=''">update_at=#{updateAt},</if>
+            <if test="dailyUrl!=null and dailyUrl!=''">daily_url=#{dailyUrl},</if>
+            <if test="flag!=null and flag!=''">flag=#{flag},</if>
+        </trim>
+        where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="pojo.Student">
+        delete from sign_up where id=#{id}
+    </delete>
+
+    <select id="select" parameterType="int" resultMap="sign">
+        select id,<include refid="allColumn"/> from sign_up where id=#{id}
+    </select>
+</mapper>
