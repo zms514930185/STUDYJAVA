@@ -26,6 +26,28 @@
             </tr>
         </c:forEach>
     </table>
+    <div style="text-align: center" >
+        <a href="?start=0">首页</a>
+        <c:choose>
+            <c:when test="${page.start!=0}">
+        <a href="?start=${page.start-page.count}">上一页</a>
+            </c:when>
+            <c:otherwise>
+                <a style="color: grey">上一页</a>
+            </c:otherwise>
+        </c:choose>
+        <c:choose  >
+            <c:when  test="${(page.count+page.start)<=page.last}">
+                <a href="?start=${page.start+page.count}">下一页</a>
+            </c:when>
+            <c:otherwise>
+                <a style="color: grey">下一页</a>
+            </c:otherwise>
+        </c:choose>
+
+
+        <a href="?start=${page.last}">末页</a>
+    </div>
 </div>
 </body>
 </html>

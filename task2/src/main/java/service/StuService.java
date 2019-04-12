@@ -15,4 +15,6 @@ public interface StuService {
 
     Student select(int id);
 
+    int deleteaMany(int[] id_arr);
+
 }

@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2><a href="/list-category">Hello World!</a> </h2>
+<a href="/list-category" style="color:white"><div style="position: absolute;width: 100%;height: 100vh"></div></a>
 </body>
 </html>

@@ -28,7 +28,20 @@
         <td>编号<input type="text" value="${s.id}"  name="id" autocomplete="off"></td>
         <td>姓名<input type="text" value="${s.stuName}"  name="stuName" autocomplete="off"></td>
         <td>QQ<input type="text" value="${s.qq}" i name="qq" autocomplete="off"></td>
-        <td>选修职业<input type="text" value="${s.job}"  name="job" autocomplete="off"></td>
+        <td>选修职业
+            <input list="source" name="job" autocomplete="off" value="${s.job}">
+            <datalist id="source">
+                <option value="ui">ui</option>
+                <option value="pm">pm</option>
+                <option value="java">java</option>
+                <option value="css">css</option>
+                <option value="js">js</option>
+                <option value="qa">qa</option>
+                <option value="op">op</option>
+                <option value="动画师">动画师</option>
+                <option value="运营">运营</option>
+            </datalist>
+            </td>
         <%--<td>修改时间<input type="text" value="${l.updateAt}" id="updateAt"></td>--%>
         <td>日报地址<input type="text" value="${s.dailyUrl}"  name="dailyUrl" autocomplete="off"></td>
         <td>立愿<input type="text" value="${s.flag}" name="flag" autocomplete="off"></td>

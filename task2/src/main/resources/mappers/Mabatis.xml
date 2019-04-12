@@ -20,8 +20,25 @@
         #{stuName},#{qq},#{job},#{createAt},#{updateAt},#{dailyUrl},#{flag}
     </sql>
 
+    <!--<insert id="addStu" parameterType="pojo.Student">-->
+        <!--insert into sign_up (<include refid="allColumn"/>) values (<include refid="values"/>);-->
+    <!--</insert>-->
+
     <insert id="addStu" parameterType="pojo.Student">
-        insert into sign_up (<include refid="allColumn"/>) values (<include refid="values"/>);
+        insert into sign_up (<include refid="allColumn"/>) values
+        (
+        #{stuName},#{qq},#{job},#{createAt},#{updateAt},
+        <trim suffixOverrides=",">
+            <choose>
+                <when test="dailyUrl!=null and dailyUrl!=''">#{dailyUrl},</when>
+                <otherwise>default ,</otherwise>
+            </choose>
+            <choose>
+                <when test="flag!=null and flag!=''">#{flag},</when>
+                <otherwise>default ,</otherwise>
+            </choose>
+        </trim>
+        )
     </insert>
 
     <select id="list" resultMap="sign">
@@ -48,4 +65,11 @@
     <select id="select" parameterType="int" resultMap="sign">
         select id,<include refid="allColumn"/> from sign_up where id=#{id}
     </select>
+
+    <delete id="deleteMany" parameterType="int">
+        delete from sign_up where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

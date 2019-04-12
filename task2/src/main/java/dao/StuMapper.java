@@ -16,4 +16,6 @@ public interface StuMapper {
     int update(Student stu);
 
     Student select(int id);
+
+    int deleteMany(int[] id_arr);
 }

@@ -22,4 +22,14 @@ public class CategoryServiceImplTest {
            System.out.println(i);
        }
     }
+
+    @Test
+    public void add(){
+        Category category=new Category();
+        for (int i=100;i<124;i++){
+            category.setName("Category"+(i+1));
+            cs.add(category);
+        }
+    }
+
 }

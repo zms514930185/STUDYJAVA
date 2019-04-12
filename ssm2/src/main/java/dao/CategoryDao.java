@@ -2,6 +2,7 @@ package dao;
 
 import org.springframework.stereotype.Repository;
 import pojo.Category;
+import util.Page;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface CategoryDao {
     int update(Category category);
 
     List<Category> list();
+//    List<Category> list(Page page);
+//    int total();
 }

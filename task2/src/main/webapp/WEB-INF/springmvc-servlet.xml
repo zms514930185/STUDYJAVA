@@ -21,5 +21,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--读取国际化资源文件-->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename">
+                <value>WEB-INF/lang/messages</value>
+        </property>
+    </bean>
 
 </beans>
