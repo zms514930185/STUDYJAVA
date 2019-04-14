@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>StuList</title>
@@ -145,9 +146,12 @@
 
             <button type="submit" type="submit" style="border-radius: 10px;">提交</button>
         </form>
-     ${l.msg}
     </div>
 </div>
+
+
+
+
 
 <script type="text/javascript" src="statics/js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
