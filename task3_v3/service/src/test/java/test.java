@@ -21,7 +21,7 @@ public class test {
     Logger logger = Logger.getLogger(test.class);
     @Test
     public void test(){
-        TableName tableName = new TableName("products","name","产品10");
+        TableName tableName = new TableName("user","username","产品10");
         logger.info("[logger]"+tableName);
         Object i=tns.selectByExample(tableName);
         System.out.println("i:"+i);
@@ -30,7 +30,7 @@ public class test {
     @Test
     public void testExist(){
 
-        TableName tableName = new TableName("products","name","产品6");
+        TableName tableName = new TableName("user","username","产品6");
         logger.info("[logger]\t"+tableName);
 
         boolean i=isExist.exist(tableName);
