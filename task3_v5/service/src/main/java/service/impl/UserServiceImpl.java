@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
     public int deleteByPrimaryKey(Long id) {
         return userMapper.deleteByPrimaryKey(id);
     }
@@ -19,20 +19,16 @@ public class UserServiceImpl implements UserService {
     public int insert(User record) {
         record.setCreateAt(System.currentTimeMillis());
         record.setUpdateAt(System.currentTimeMillis());
-//        //        后期修改
-//        record.setCreateBy(1L);
-//        //        后期修改
-//        record.setUpdateBy(1L);
+        record.setCreateBy(2L);
+        record.setUpdateBy(3L);
         return userMapper.insert(record);
     }
 
     public int insertSelective(User record) {
         record.setCreateAt(System.currentTimeMillis());
         record.setUpdateAt(System.currentTimeMillis());
-//        //        后期修改
-//        record.setCreateBy(System.currentTimeMillis());
-//        //        后期修改
-//        record.setUpdateBy(System.currentTimeMillis());
+        record.setCreateBy(1L);
+        record.setUpdateBy(2L);
         return userMapper.insertSelective(record);
     }
 
@@ -46,12 +42,11 @@ public class UserServiceImpl implements UserService {
 
     public int updateByPrimaryKeySelective(User record) {
         record.setUpdateAt(System.currentTimeMillis());
-        record.setUpdateBy(0L);
+        record.setUpdateBy(2L);
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
     public int updateByPrimaryKey(User record) {
-        record.setUpdateAt(System.currentTimeMillis());
-        return userMapper.updateByPrimaryKey(record);
+        return 0;
     }
 }
