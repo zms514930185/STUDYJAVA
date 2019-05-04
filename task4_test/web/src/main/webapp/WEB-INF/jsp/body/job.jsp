@@ -117,7 +117,7 @@
                     <!--第五行-->
                     <tr>
                         <td colspan="2" class="row-four">
-                            有<span class="red-word">286</span>人正在学
+                            有<span class="red-word">${f.job}</span>人正在学
                         </td>
                     </tr>
                     <!--第六行-->
