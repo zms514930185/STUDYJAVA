@@ -7,6 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div style="height: 300px">
-    <div style="text-align: center"><img src="/static/image/timg.gif"></div>
+    <div style="text-align: center"><img src="/view/image/timg.gif"></div>
 
 </div>

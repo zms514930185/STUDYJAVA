@@ -67,13 +67,13 @@
                         <td class="row-two-left">
                             <span class="gray-word">门槛</span>
                             <c:forEach begin="1" end="${f.threshold}">
-                                <img src="/static/image/task14.3/star.png">
+                                <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                         <td class="row-two-right">
                             <span class="gray-word">难易程度</span>
                             <c:forEach begin="1" end="${f.difficult}">
-                            <img src="/static/image/task14.3/star.png">
+                            <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                     </tr>
@@ -169,13 +169,13 @@
                         <td class="row-two-left">
                             <span class="gray-word">门槛</span>
                             <c:forEach begin="1" end="${b.threshold}">
-                            <img src="/static/image/task14.3/star.png">
+                            <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                         <td class="row-two-right">
                             <span class="gray-word">难易程度</span>
                             <c:forEach begin="1" end="${b.difficult}">
-                            <img src="/static/image/task14.3/star.png">
+                            <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                     </tr>
@@ -271,13 +271,13 @@
                         <td class="row-two-left">
                             <span class="gray-word">门槛</span>
                             <c:forEach begin="1" end="${u.threshold}">
-                            <img src="/static/image/task14.3/star.png">
+                            <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                         <td class="row-two-right">
                             <span class="gray-word">难易程度</span>
                             <c:forEach begin="1" end="${u.difficult}">
-                            <img src="/static/image/task14.3/star.png">
+                            <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                     </tr>
@@ -373,13 +373,13 @@
                         <td class="row-two-left">
                             <span class="gray-word">门槛</span>
                             <c:forEach begin="1" end="${m.threshold}">
-                            <img src="/static/image/task14.3/star.png">
+                            <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                         <td class="row-two-right">
                             <span class="gray-word">难易程度</span>
                             <c:forEach begin="1" end="${m.difficult}">
-                                <img src="/static/image/task14.3/star.png">
+                                <img src="/view/image/task14.3/star.png">
                             </c:forEach>
                         </td>
                     </tr>

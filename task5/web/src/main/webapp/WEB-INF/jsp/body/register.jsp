@@ -18,7 +18,7 @@
 
 <div style="background-color: #F5F5F5;padding: 100px 0 100px 0;height: 600px;display:flex;justify-content: space-around">
     <div >
-        <img src="/static/image/login-ad_03.png">
+        <img src="/view/image/login-ad_03.png">
     </div >
     <div style="background-color: #ffffff;border: 1px solid #999999;width: 400px;height: 350px;display: flex;justify-content: center">
 

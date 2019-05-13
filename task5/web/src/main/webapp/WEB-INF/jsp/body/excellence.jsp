@@ -18,7 +18,7 @@
     <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
     <%--<meta http-equiv="X-UA-Compatible" content="ie=edge">--%>
     <%--<title>Document</title>--%>
-    <%--<link rel="stylesheet" href="/static/css/task14.1/task14.1.css">--%>
+    <%--<link rel="stylesheet" href="/view/css/task14.1/task14.1.css">--%>
 <%--</head>--%>
 
 <%--<body>--%>
@@ -38,31 +38,31 @@
     <div class="container why">
         <div class="row">
             <div class="col-md-5 col-sm-10 col-20 rocket">
-                <img src="/static/image/task14.1/rocket.png">
+                <img src="/view/image/task14.1/rocket.png">
                 <div class="why-word1">高效</div>
                 <div class="why-word2">将五到七年的成长时间，缩短到一年到三年。
                 </div>
             </div>
             <div class="col-md-5 col-sm-10 col-20 archive">
-                <img src="/static/image/task14.1/archive.png">
+                <img src="/view/image/task14.1/archive.png">
                 <div class="why-word1">规范</div>
                 <div class="why-word2">标准的实战教程，不会走弯路。
                 </div>
             </div>
             <div class="col-md-5 col-sm-10 col-20 shape">
-                <img src="/static/image/task14.1/shape.png">
+                <img src="/view/image/task14.1/shape.png">
                 <div class="why-word1">人脉</div>
                 <div class="why-word2">同班好友，同院学长，技术大师，入学就混入职脉圈，为以后铺平道路。
                 </div>
             </div>
             <div class="col-md-5 col-sm-10 col-20 user">
                 <div class="user-part">
-                    <img class="person" src="/static/image/task14.1/user.png">
+                    <img class="person" src="/view/image/task14.1/user.png">
                     <div class="why-word1">12400</div>
                     <div class="why-word2">累计在线学习人数</div>
                 </div>
                 <div class="user-part">
-                    <img class="person" src="/static/image/task14.1/user.png">
+                    <img class="person" src="/view/image/task14.1/user.png">
                     <div class="why-word1">12400</div>
                     <div class="why-word2">学员已经找到满意工作</div>
                 </div>
@@ -189,19 +189,19 @@
         <div class="partners-title">战略合作企业</div>
         <div class="partner-box">
             <div class="partner">
-                <img src="/static/image/task14.1/goldcloud.png">
+                <img src="/view/image/task14.1/goldcloud.png">
             </div>
             <div class="partner">
-                <img src="/static/image/task14.1/yuntong.png">
+                <img src="/view/image/task14.1/yuntong.png">
             </div>
             <div class="partner">
-                <img src="/static/image/task14.1/alibaba.png">
+                <img src="/view/image/task14.1/alibaba.png">
             </div>
             <div class="partner">
-                <img src="/static/image/task14.1/sevencow.png">
+                <img src="/view/image/task14.1/sevencow.png">
             </div>
             <div class="partner">
-                <img src="/static/image/task14.1/beliebe.png">
+                <img src="/view/image/task14.1/beliebe.png">
             </div>
         </div>
     </div>

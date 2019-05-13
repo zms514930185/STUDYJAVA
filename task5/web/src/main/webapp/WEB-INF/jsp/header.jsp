@@ -14,7 +14,7 @@
     <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
     <%--<meta http-equiv="X-UA-Compatible" content="ie=edge">--%>
     <%--<title>Document</title>--%>
-    <%--<link rel="stylesheet" href="/static/css/task14.1/task14.1.css">--%>
+    <%--<link rel="stylesheet" href="/view/css/task14.1/task14.1.css">--%>
 <%--</head>--%>
 <%--<body>--%>
 <header>
@@ -22,9 +22,9 @@
         <div class="row header-top align-items-center">
             <div class="col-13  customService">客服热线：010-594-78634</div>
             <div class="col-7 justify-content-right ">
-                <img class="icons" src="/static/image/task14.1/qq.png">
-                <img class="icons" src="/static/image/task14.1/wechat.png">
-                <img class="icons" src="/static/image/task14.1/sina.png">
+                <img class="icons" src="/view/image/task14.1/qq.png">
+                <img class="icons" src="/view/image/task14.1/wechat.png">
+                <img class="icons" src="/view/image/task14.1/sina.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a style="color: #333333;" href="/a/u/vip">登录</a> </span>
                 &nbsp;&nbsp;<span><a style="border-left: #999999 1px solid;padding-left:10px;color: #333333;" href="/a/register">注册</a> </span>
             </div>

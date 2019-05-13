@@ -15,7 +15,7 @@
     <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
     <%--<meta http-equiv="X-UA-Compatible" content="ie=edge">--%>
     <%--<title>Document</title>--%>
-    <%--<link rel="stylesheet" href="/static/css/task14.1/task14.1.css">--%>
+    <%--<link rel="stylesheet" href="/view/css/task14.1/task14.1.css">--%>
 <%--</head>--%>
 <tiles:insertAttribute name="head"/>
 <body>

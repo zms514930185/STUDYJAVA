@@ -13,7 +13,7 @@
 
     <!-- 允许对静态资源文件的访问 -->
     <!--将静态资源交给defaultServlet处理，不给springmvc处理-->
-    <!--<mvc:resources mapping="/static/**" location="/static/"/>-->
+    <!--<mvc:resources mapping="/view/**" location="/view/"/>-->
     <mvc:default-servlet-handler/>
 
     <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" p:order="1"/>

@@ -1,6 +1,29 @@
 package pojo;
 
 public class User {
+
+    public User(Long id, String name, String qq, String job, Long createAt, Long updateAt, String daily, String flag, Long mobil, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.qq = qq;
+        this.job = job;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.daily = daily;
+        this.flag = flag;
+        this.mobil = mobil;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(Long mobil, String password) {
+        this.mobil = mobil;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
     private Long id;
 
     private String name;

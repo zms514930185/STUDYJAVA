@@ -2,24 +2,23 @@ package controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pojo.User;
-import pojo.UserExample;
 import service.UserService;
 import util.CookieUtils;
 import util.JWTUtils;
 import util.MD5Utils;
+import util.NumCheck;
 
 
-import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
+
 
 @Controller
 public class LogController {
@@ -45,7 +44,6 @@ public class LogController {
             mav.setViewName("login");
             return mav;
         }
-
 
         Long mobil=Long.valueOf(username);
         logger.info("[logger]mobil转换格式mobil="+mobil);
@@ -101,12 +99,20 @@ public class LogController {
 
         ModelAndView mav = new ModelAndView();
         try {
+            logger.info("[logger]判空判null");
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
             mav.addObject("code", -1);
             mav.addObject("msg", "不能为空");
             mav.setViewName("register");
             return mav;
         }
+            logger.info("[logger]校验手机号");
+        if (username.length() != 11 || !NumCheck.checkNumber(username)) {
+                mav.addObject("code", -1);
+                mav.addObject("msg", "手机号不正确");
+                mav.setViewName("register");
+                return mav;
+         }
 
         Long mobil = Long.valueOf(username);
         logger.info("[logger]将string转成long="+mobil);
@@ -159,4 +165,5 @@ public class LogController {
     public ModelAndView vipView(){
         return new ModelAndView("vip");
     }
+
 }
