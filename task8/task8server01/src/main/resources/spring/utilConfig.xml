@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:properties/*.properties"/>
+
+    <!--xmemcache-->
+    <!-- # memcachedClientBuilder failureMode=false 是否启用failure模式，true为启用，默认不启用。所谓failure模式是指，
+		 #connectionPoolSize=1 nio连接池大小,默认对一个memcached节点只有一个连接，这在通常情况 下已经有非常优异的表现。
+		  但是在典型的高并发环境下,nio的单连接也会遇到性能瓶颈。可通过调整连接池数量,允许建立多个连接到同一个memcached节点，
+		  但是请注意，这些连接之间是不同步的， 因此你的应用需要自己保证数据更新的同步 -->
+    <bean id="memcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder"
+          p:connectionPoolSize="${memcached.connectionPoolSize}" p:failureMode="${memcached.failureMode}">
+        <!-- XMemcachedClientBuilder have two arguments.First is server list,and
+            second is weights array. -->
+        <!-- # 服务器节点:形如："主节点1:port,备份节点1:port 主节点2:port,备份节点2:port"的字符串，
+             #可以不设置备份节点，主备节点逗号隔开，不同分组空格隔开
+             #由于该应用功能是加载数据，可以只考虑分布式，即以空格分隔ip的配置方式，不考虑主备关系 -->
+        <constructor-arg>
+            <list>
+                <bean class="java.net.InetSocketAddress">
+                    <constructor-arg>
+                        <value>${memcached.server1.host}</value>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <value>${memcached.server1.port}</value>
+                    </constructor-arg>
+                </bean>
+                <!--<bean class="java.net.InetSocketAddress">-->
+                <!--<constructor-arg>-->
+                <!--<value>${memcached.server2.host}</value>-->
+                <!--</constructor-arg>-->
+                <!--<constructor-arg>-->
+                <!--<value>${memcached.server2.port}</value>-->
+                <!--</constructor-arg>-->
+                <!--</bean>-->
+            </list>
+        </constructor-arg>
+        <!-- # 与servers对应的节点的权重,格式同服务器节点,权重是用来调节memcached的负载，设置的权重越高，
+         该memcached节点存储的数据将越多，所承受的负载越大。 -->
+        <constructor-arg>
+            <list>
+                <value>${memcached.server1.weight}</value>
+            </list>
+        </constructor-arg>
+        <!-- (1) 协议工厂 net.rubyeye.xmemcached.command.BinaryCommandFactory(二进制)
+             (2) 协议工厂 net.rubyeye.xmemcached.command.TextCommandFactory(文本)
+             (3) 协议工厂 net.rubyeye.xmemcached.command.KestrelCommandFactory(可靠获取) -->
+        <property name="commandFactory">
+            <bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory" />
+        </property>
+        <!-- (1) net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator 分布策略，一致性哈希（用于增加主机时降低未命中率问题的解决）
+             (2) ArrayMemcachedSessionLocator(默认) ,默认分布的策略是按照key的哈希值模以连接数得到的余数，对应的连接就是将要存储的节点  -->
+        <property name="sessionLocator">
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator" />
+        </property>
+        <!-- # 序列化转换器，默认使用net.rubyeye.xmemcached.transcoders.SerializingTranscoder -->
+        <property name="transcoder">
+            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+        </property>
+    </bean>
+    <!-- Use factory bean to build memcached client 当一个memcached节点down掉的时候，
+    发往这个节点的请求将直接失败，而不是发送给下一个有效的memcached节点。 -->
+    <bean id="memcachedClient" factory-bean="memcachedClientBuilder"
+          factory-method="build" destroy-method="shutdown" />
+
+
+    <!--redis-->
+    <!-- 加载配置文件 -->
+    <!--<context:property-placeholder location="classpath:*.properties" />-->
+    <!-- redis连接池配置-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" >
+        <!--最大空闲数-->
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <!--连接池的最大数据库连接数  -->
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <!--最大建立连接等待时间-->
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+        <!--逐出连接的最小空闲时间 默认1800000毫秒(30分钟)-->
+        <property name="minEvictableIdleTimeMillis" value="${redis.minEvictableIdleTimeMillis}" />
+        <!--每次逐出检查时 逐出的最大数目 如果为负数就是 : 1/abs(n), 默认3-->
+        <property name="numTestsPerEvictionRun" value="${redis.numTestsPerEvictionRun}" />
+        <!--逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1-->
+        <property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}" />
+        <!--是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个-->
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        <!--在空闲时检查有效性, 默认false  -->
+        <property name="testWhileIdle" value="${redis.testWhileIdle}" />
+    </bean >
+
+    <!--redis连接工厂 -->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
+        <property name="poolConfig" ref="jedisPoolConfig"></property>
+        <!--IP地址 -->
+        <property name="hostName" value="${redis.hostName}"></property>
+        <!--端口号  -->
+        <property name="port" value="${redis.port}"></property>
+        <!--如果Redis设置有密码  -->
+        <!--<property name="password" value="${redis.password}" />-->
+        <!--客户端超时时间单位是毫秒  -->
+        <property name="timeout" value="${redis.timeout}"></property>
+    </bean>
+
+    <!--redis操作模版,使用该对象可以操作redis  -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connection-factory-ref="jedisConnectionFactory" >
+        <property name="keySerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="hashKeySerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+        <property name="hashValueSerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+    </bean >
+
+    <!--自定义redis工具类,在需要缓存的地方注入此类  -->
+    <bean id="redisUtil" class="redis.RedisUtil">
+        <property name="redisTemplate" ref="redisTemplate" />
+    </bean>
+</beans>

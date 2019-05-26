@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:properties/memcached.properties" file-encoding="UTF-8"/>
+
+
+    <!-- 属性文件读入 -->
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value>WEB-INF/properties/*.properties</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property  name="fileEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+
+
+    <!-- 对上传文件的解析-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设定默认编码-->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--设定文件上传最大值5MB-->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
+
+    <!--上传文件-->
+    <bean id="aliOssBean" class="util.ali.AliOssBean">
+        <property name="accessKeyId" value="${alioss.accessKeyId}"/>
+        <property name="accessKeySecret" value="${alioss.accessKeySecret}"/>
+        <property name="bucketName" value="${alioss.bucketName}"/>
+    </bean>
+
+    <!--邮件发送-->
+    <bean id="aliEmailBean" class="util.ali.AliEmailBean">
+        <property name="accessKeyId" value="${aliemail.accessKeyId}"/>
+        <property name="accessKeySecret" value="${aliemail.accessKeySecret}"/>
+        <property name="accountName" value="${aliemail.accountName}"/>
+        <property name="fromAlias" value="${aliemail.fromAlias}"/>
+        <property name="tagName" value="${aliemail.tagName}"/>
+        <property name="subject" value="${aliemail.subject}"/>
+    </bean>
+
+    <!--短信发送-->
+    <bean id="aliSmsBean" class="util.ali.AliSmsBean">
+        <property name="accessKeyId" value="${alisms.accessKeyIdt}"/>
+        <property name="accessKeySecret" value="${alisms.accessKeySecre}"/>
+        <property name="signName" value="${alisms.signName}"/>
+        <property name="templateCode" value="${alisms.templateCode}"/>
+    </bean>
+
+</beans>
