@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="company01" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.CompanyService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8088/companyRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8088/companyRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8088/companyRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+    <bean id="excellence01" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.ExcellenceService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8088/excellenceRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8088/excellenceRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8088/excellenceRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+    <bean id="jobService01" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.JobService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8088/jobRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8088/jobRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8088/jobRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+    <bean id="userService01" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.UserService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8088/userRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8088/userRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8088/userRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+
+    <bean id="helloService01" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.HelloService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8088/helloRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8088/helloRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8088/helloRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+
+
+
+    <bean id="company02" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.CompanyService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8089/companyRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8089/companyRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8089/companyRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+    <bean id="excellence02" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.ExcellenceService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8089/excellenceRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8089/excellenceRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8089/excellenceRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+    <bean id="jobService02" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.JobService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8089/jobRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8089/jobRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8089/jobRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+    <bean id="userService02" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.UserService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8089/userRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8089/userRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8089/userRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+
+    <bean id="helloService02" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceInterface" value="service.HelloService"/>
+        <!--<property name="serviceUrl" value="rmi://127.0.0.1:8089/helloRMI"/>-->
+        <!--<property name="serviceUrl" value="rmi://35.200.133.38:8089/helloRMI"/>-->
+        <property name="serviceUrl" value="rmi://101.132.156.239:8089/helloRMI"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+    </bean>
+
+</beans>
