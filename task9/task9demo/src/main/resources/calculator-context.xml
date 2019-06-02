@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sca="http://www.springframework.org/schema/sca"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--注解注入-->
+    <context:component-scan base-package="service"/>
+
+    <!--手动注入-->
+    <!--<bean name="addService" class="service.impl.AddInterfaceImpl"/>-->
+    <!--<bean name="subtractService" class="service.impl.SubtractInterfaceImpl"/>-->
+    <!--<bean name="multiplyService" class="service.impl.MultiplyInterfaceImpl"/>-->
+    <!--<bean name="divideService" class="service.impl.DivideInterfaceImpl"/>-->
+
+    <sca:service name="Calculator" type="service.CalculatorInterface" target="calculator"/>
+
+    <!--手动注入-->
+    <!--<bean id="Calculator" class="service.impl.Calculator" name="calculator">-->
+        <!--<property name="add" ref="addService"/>-->
+        <!--<property name="subtract" ref="subtractService"/>-->
+        <!--<property name="multiply" ref="multiplyService"/>-->
+        <!--<property name="divide" ref="divideService"/>-->
+    <!--</bean>-->
+
+    <sca:reference name="add" type="service.AddInterface"/>
+    <sca:reference name="subtract" type="service.SubtractInterface"/>
+    <sca:reference name="multiply" type="service.MultiplyInterface"/>
+    <sca:reference name="divide" type="service.DivideInterface"/>
+</beans>
